@@ -8,7 +8,9 @@ class App extends Component {
 
 	state = {
 		houses: [], 
-		selectedHouse: null
+		allHouses: [],
+		selectedHouse: null,
+		search: ''
 	}
 
 	componentDidMount() {
@@ -16,12 +18,23 @@ class App extends Component {
 		fetch (url) //AJAX
 			.then(response => response.json())
 			.then(data => {
-				this.setState({ houses: data })
+				this.setState({ 
+					houses: data,
+					allHouses: data,
+					selectedHouse: data[0]
+				})
 			})
 	};
 
 	selectHouse = (house) => {
 		this.setState({ selectedHouse: house })
+	}
+
+	handleSearch = (e) => {
+		this.setState({ 
+			search: e.target.value,
+			houses: this.state.allHouses.filter((house) => new RegExp(e.target.value, 'i').exec(house.name)) 
+		})
 	}
 
 	render() {
@@ -41,7 +54,15 @@ class App extends Component {
 		return (
 			<div className="app" style={{ height: '100vh', width: '100%'}}>
 				<div className="main">
-					<div className="search"></div>
+					<div className="search">
+						<input 
+							type="text"
+							placeholder="Search..."
+							value={this.state.search}
+							onChange={this.handleSearch}
+							/>
+					</div>
+					
 					<div className="houses">
 						{ this.state.houses.map(house => {
 							return <House 
@@ -55,10 +76,15 @@ class App extends Component {
 					<GoogleMapReact
 						// bootstrapURLKeys={{ key: 'AIzaSyAHbKWGMwqv0GJhaVj1XKMXFZeLdzzXK' }}
 						center={center}
-						zoom={14}  /* 1-15 */
+						zoom={11}  /* 1-15 */
 					>
 					{ this.state.houses.map(house => {
-							return <Marker key={house.name} lat={house.lat} lng={house.lng} text={house.price}/>
+							return <Marker 
+								key={house.name} 
+								lat={house.lat} 
+								lng={house.lng} 
+								text={house.price}
+								selected={house === this.state.selectedHouse}/>
 					})}
 					</GoogleMapReact>
 				</div>
