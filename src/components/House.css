@@ -5,6 +5,11 @@ html, body {
 .house {
     flex-basis: calc(50% - 20px);
     margin: 10px;
+    cursor: pointer;
+}
+
+.house:hover {
+    opacity: 0.6;
 }
 
 .house-picture {

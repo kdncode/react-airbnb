@@ -5,8 +5,8 @@
     "imageUrl": "https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg",
     "price": 164,
     "priceCurrency": "$",
-    "lat": 48.884211,
-    "lng": 2.346890
+    "lat": 37.774929,
+    "lng": -122.419416
   },
   {
     "id": 148,
@@ -14,8 +14,8 @@
     "imageUrl": "https://a0.muscache.com/im/pictures/1faf9a4c-f839-44da-bd37-65ddc928379e.jpg",
     "price": 200,
     "priceCurrency": "$",
-    "lat": 48.885707,
-    "lng": 2.343543
+    "lat": 37.781769,
+    "lng": -122.487479
   },
   {
     "id": 201,
@@ -23,8 +23,8 @@
     "imageUrl": "https://a0.muscache.com/im/pictures/307a5575-c3a4-4b21-8127-a37875ec1239.jpg",
     "price": 150,
     "priceCurrency": "$",
-    "lat": 48.885312,
-    "lng": 2.341225
+    "lat": 37.740920,
+    "lng": -122.497092
   },
   {
     "id": 205,
@@ -32,8 +32,8 @@
     "imageUrl": "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat4.jpg",
     "price": 115,
     "priceCurrency": "$",
-    "lat": 48.881840,
-    "lng": 2.343371
+    "lat": 37.679430,
+    "lng": -122.484918
   },
   {
     "id": 210,
@@ -41,8 +41,8 @@
     "imageUrl": "https://a0.muscache.com/im/pictures/812e040f-6f6f-4cae-ad67-66c050b57c1f.jpg",
     "price": 135,
     "priceCurrency": "$",
-    "lat": 48.888839,
-    "lng": 2.339208
+    "lat": 37.630952,
+    "lng": -122.410417
   },
   {
     "id": 211,
@@ -50,7 +50,7 @@
     "imageUrl": "https://a0.muscache.com/4ea/air/v2/pictures/58523d83-dd73-4658-a563-4ceb742a9531.jpg",
     "price": 90,
     "priceCurrency": "$",
-    "lat": 48.827855,
-    "lng": 2.350774
+    "lat": 37.485075,
+    "lng": -122.147541
   }
 ]

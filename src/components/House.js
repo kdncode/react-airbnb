@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './House.css';
 
 class House extends Component {
+
+    handleClick = () => {
+        // Call the parent method selectHouse
+        this.props.selectHouse(this.props.house);
+    }
+
     render() {
 
         const title = this.props.house.priceCurrency 
@@ -13,7 +19,7 @@ class House extends Component {
         };
 
         return (
-            <div className="house">
+            <div className="house" onClick={this.handleClick}>
                 <div className="house-picture" style={style}></div>
                 <div className="house-title">
                     { title }

@@ -7,7 +7,8 @@ import Marker from './components/Marker';
 class App extends Component {
 
 	state = {
-		houses: []
+		houses: [], 
+		selectedHouse: null
 	}
 
 	componentDidMount() {
@@ -19,11 +20,22 @@ class App extends Component {
 			})
 	};
 
+	selectHouse = (house) => {
+		this.setState({ selectedHouse: house })
+	}
+
 	render() {
 
-		const center = {
+		let center = {
 			lat: 37.7749,  /* latitude */
 			lng: 122.4194  /* longtitude */
+		}
+
+		if (this.state.selectedHouse) {
+			center = {
+				lat: this.state.selectedHouse.lat,
+				lng: this.state.selectedHouse.lng
+			}
 		}
 	
 		return (
@@ -32,7 +44,10 @@ class App extends Component {
 					<div className="search"></div>
 					<div className="houses">
 						{ this.state.houses.map(house => {
-							return <House house={house}/>
+							return <House 
+								key={house.name} 
+								house={house}
+								selectHouse={this.selectHouse}/>
 						})}
 					</div>
 				</div>
@@ -43,7 +58,7 @@ class App extends Component {
 						zoom={14}  /* 1-15 */
 					>
 					{ this.state.houses.map(house => {
-							return <Marker lat={house.lat} lng={house.lng} text={house.price}/>
+							return <Marker key={house.name} lat={house.lat} lng={house.lng} text={house.price}/>
 					})}
 					</GoogleMapReact>
 				</div>
