@@ -8,6 +8,15 @@ class App extends Component {
 		houses: []
 	}
 
+	componentDidMount() {
+		const url = `https://raw.githubusercontent.com/kdncode/react-airbnb/master/api.json`;
+		fetch (url) //AJAX
+			.then(response => response.json())
+			.then(data => {
+				this.setState({ houses: data })
+			})
+	}
+
 	render() {
 
 		return (
