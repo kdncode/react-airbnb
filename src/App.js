@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import GoogleMapReact from 'google-map-react';
 import House from './components/House';
+import Marker from './components/Marker';
 
 class App extends Component {
 
@@ -9,18 +11,23 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		const url = `https://raw.githubusercontent.com/kdncode/react-airbnb/master/api.json`;
+		const url = `http://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/kdncode/react-airbnb/master/api.json`;
 		fetch (url) //AJAX
 			.then(response => response.json())
 			.then(data => {
 				this.setState({ houses: data })
 			})
-	}
+	};
 
 	render() {
 
+		const center = {
+			lat: 37.7749,  /* latitude */
+			lng: 122.4194  /* longtitude */
+		}
+	
 		return (
-			<div className="app">
+			<div className="app" style={{ height: '100vh', width: '100%'}}>
 				<div className="main">
 					<div className="search"></div>
 					<div className="houses">
@@ -29,7 +36,17 @@ class App extends Component {
 						})}
 					</div>
 				</div>
-				<div className="map"></div>
+				<div className="map">
+					<GoogleMapReact
+						// bootstrapURLKeys={{ key: 'AIzaSyAHbKWGMwqv0GJhaVj1XKMXFZeLdzzXK' }}
+						center={center}
+						zoom={14}  /* 1-15 */
+					>
+					{ this.state.houses.map(house => {
+							return <Marker lat={house.lat} lng={house.lng} text={house.price}/>
+					})}
+					</GoogleMapReact>
+				</div>
 			</div>
 		);
 	}
